@@ -20,6 +20,7 @@ public class UserProcessTest {
         {
             User user = map.get(key);
             System.out.println(user);
+            System.out.println(user.getVipCount());
         }
     }
 }

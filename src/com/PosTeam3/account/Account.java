@@ -48,6 +48,7 @@ public class Account {
                     }
                 }
 
+
                 accountGoods.add(accountGood);
             }
         }
@@ -72,5 +73,25 @@ public class Account {
             sumBeforeSave += accountGood.getSubTotBeforeDiscount();
         }
         return sumBeforeSave-sum;
+    }
+    public void getUserInfo(User user,List<AccountGood> accountGoods)
+    {
+        double sum = 0;
+        for(AccountGood accountGood:accountGoods)
+        {
+            sum += accountGood.getSubtotal();
+        }
+        if(sum>=0&&sum<=200)
+        {
+            user.setVipCount(user.getVipCount()+(int)sum/5);
+        }
+        if(sum>200&&sum<=500)
+        {
+            user.setVipCount(user.getVipCount()+(int)sum/5*3);
+        }
+        if(sum>500)
+        {
+            user.setVipCount(user.getVipCount()+(int)sum/5*5);
+        }
     }
 }

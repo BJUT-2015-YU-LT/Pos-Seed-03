@@ -2,11 +2,10 @@ package com.PosTeam3.user;
 
 import com.PosTeam3.core.Product;
 import com.PosTeam3.core.User;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -38,6 +37,7 @@ public class UserProcess {
                 user.setNo(key);
                 user.setName(childObject.getString("name"));
                 user.setVip(childObject.getBoolean("isVip"));
+                user.setVipCount(childObject.getInt("vipCount"));
                 map.put(key,user);
             }
         }
@@ -46,5 +46,34 @@ public class UserProcess {
             e.printStackTrace();
         }
         return map;
+    }
+
+    public void writeBack(Map<String, User> map)
+    {
+        JSONObject jsonObject = new JSONObject();
+        for(String key:map.keySet())
+        {
+            JSONObject jsonObject1 = new JSONObject();
+            jsonObject1.put("name",map.get(key).getName());
+            jsonObject1.put("isVip",map.get(key).isVip());
+            jsonObject1.put("vipCount",map.get(key).getVipCount());
+            jsonObject.put(key,jsonObject1);
+        }
+
+        try{
+            File file =new File("G:\\Learn\\GitHub\\Pos-Seed-03\\user.txt");
+
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileWriter fileWritter = new FileWriter(file.getName());
+            BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+            bufferWritter.write(jsonObject.toString());
+            bufferWritter.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }

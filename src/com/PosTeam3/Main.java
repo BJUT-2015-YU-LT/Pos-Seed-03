@@ -44,6 +44,9 @@ public class Main {
 
             DecimalFormat df = new DecimalFormat("#0.00");
             System.out.println("***商店购物清单***");
+            account.getUserInfo(user,accountGoods);
+            System.out.println("会员编号 : "+user.getNo()+"  会员积分 : "+user.getVipCount()+"分");
+            System.out.println("-----------------");
             Date now = new Date();
             SimpleDateFormat time = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
             System.out.println("打印时间 : " + time.format(now));
@@ -61,6 +64,7 @@ public class Main {
             System.out.println("总计 : " + df.format(account.account(accountGoods)));
             System.out.println("节省 : " + df.format(account.accountSaved(accountGoods)));
             System.out.println("*****************");
+            userProcess.writeBack(userMap);
         }
     }
 }

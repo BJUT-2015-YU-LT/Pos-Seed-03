@@ -7,6 +7,15 @@ public class User {
     String no;
     String name;
     boolean isVip;
+    int vipCount;
+
+    public int getVipCount() {
+        return vipCount;
+    }
+
+    public void setVipCount(int vipCount) {
+        this.vipCount = vipCount;
+    }
 
     public String getNo() {
         return no;
