@@ -43,6 +43,14 @@ public class Main {
             System.out.println(accountGood);
         }
         System.out.println("-----------------");
+        for(AccountGood accountGood:accountGoods)
+        {
+            if(accountGood.isPromotion())
+            {
+                System.out.println("赠送 : "+accountGood.getName()+" "+accountGood.getPromotionNum()+accountGood.getUnit());
+            }
+        }
+        System.out.println("-----------------");
         System.out.println("总计 : "+df.format(account.account(accountGoods)));
         System.out.println("节省 : "+df.format(account.accountSaved(accountGoods)));
         System.out.println("*****************");

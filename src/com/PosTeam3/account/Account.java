@@ -28,6 +28,23 @@ public class Account {
                         *shopCart.get(shopCartKey));
                 accountGood.setSubTotBeforeDiscount(index.get(shopCartKey).getPrice()
                         *shopCart.get(shopCartKey));
+                accountGood.setDiscount(index.get(shopCartKey).getDiscount());
+                accountGood.setPromotion(index.get(shopCartKey).isPromotion());
+                if(accountGood.getDiscount()==1.0)
+                {
+                    if(accountGood.isPromotion()) {
+                        if (accountGood.getCount() % 3 == 2) {
+                            accountGood.setSubtotal(accountGood.getSubtotal() - (accountGood.getCount() / 3) * accountGood.getPrice());
+                            accountGood.setSubTotBeforeDiscount(accountGood.getSubTotBeforeDiscount() + accountGood.getPrice());
+                            accountGood.setPromotionNum(accountGood.getCount() / 3 + 1);
+                            accountGood.setCount(accountGood.getCount() + 1);
+                        } else {
+                            accountGood.setSubtotal(accountGood.getSubtotal() - (accountGood.getCount() / 3) * accountGood.getPrice());
+                            accountGood.setPromotionNum(accountGood.getCount() / 3);
+                        }
+                    }
+                }
+
                 accountGoods.add(accountGood);
             }
         }

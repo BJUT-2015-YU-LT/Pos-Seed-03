@@ -9,9 +9,37 @@ public class AccountGood {
     String name;
     String unit;
     double price;
-    double count;
+    int count;
     double subtotal;
     double subTotBeforeDiscount;
+    boolean promotion;
+    double discount;
+
+    public int getPromotionNum() {
+        return promotionNum;
+    }
+
+    public void setPromotionNum(int promotionNum) {
+        this.promotionNum = promotionNum;
+    }
+
+    int promotionNum;
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
 
     public double getSubTotBeforeDiscount() {
         return subTotBeforeDiscount;
@@ -46,11 +74,11 @@ public class AccountGood {
         this.price = price;
     }
 
-    public double getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(double count) {
+    public void setCount(int count) {
         this.count = count;
     }
 

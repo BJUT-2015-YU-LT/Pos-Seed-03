@@ -39,11 +39,13 @@ public class Index {
                 String unit = childObject.getString("unit");
                 double price = childObject.getDouble("price");
                 double discount = childObject.getDouble("discount");
+                boolean promotion = childObject.getBoolean("promotion");
                 Product product = new Product();
                 product.setBarcode(key);
                 product.setName(name); product.setUnit(unit);
                 product.setPrice(price); product.setDiscount(discount);
-                map.put(key,product);
+                product.setPromotion(promotion);
+                map.put(key, product);
             }
         }
         catch (IOException e)

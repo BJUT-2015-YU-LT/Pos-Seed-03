@@ -18,7 +18,7 @@ public class IndexTest {
         Map<String,Product> indexMap= index.read();
         for(String key : indexMap.keySet())
         {
-            System.out.println(key);
+            System.out.println(indexMap.get(key).isPromotion());
         }
     }
 }
