@@ -9,6 +9,15 @@ public class Product {
     String unit;
     double price;
     double discount;
+    boolean promotion;
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
 
     public String getBarcode() {
         return barcode;
