@@ -10,6 +10,15 @@ public class Product {
     double price;
     double discount;
     boolean promotion;
+    double vipDiscount;
+
+    public double getVipDiscount() {
+        return vipDiscount;
+    }
+
+    public void setVipDiscount(double vipDiscount) {
+        this.vipDiscount = vipDiscount;
+    }
 
     public boolean isPromotion() {
         return promotion;

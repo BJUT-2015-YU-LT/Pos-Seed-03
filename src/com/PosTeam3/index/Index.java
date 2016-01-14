@@ -40,11 +40,13 @@ public class Index {
                 double price = childObject.getDouble("price");
                 double discount = childObject.getDouble("discount");
                 boolean promotion = childObject.getBoolean("promotion");
+                double vipDiscount = childObject.getDouble("vipDiscount");
                 Product product = new Product();
                 product.setBarcode(key);
                 product.setName(name); product.setUnit(unit);
                 product.setPrice(price); product.setDiscount(discount);
                 product.setPromotion(promotion);
+                product.setVipDiscount(vipDiscount);
                 map.put(key, product);
             }
         }

@@ -13,9 +13,9 @@ import java.util.*;
  * Created by 硕 on 2016/1/11.
  */
 public class ShopCart {
-    public List<String> read(String filePath)
+    public Map<String,List<String>> read(String filePath)
     {
-        List<String> list = new ArrayList<String>();
+        Map<String,List<String>> map = new HashMap<String,List<String>>();
         try{
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
             StringBuilder stringBuilder = new StringBuilder();
@@ -26,23 +26,28 @@ public class ShopCart {
                     stringBuilder.append(data);
                 }
             } while (data != null);
-            JSONArray jsonArray = JSONArray.fromObject(stringBuilder.toString());
-            for(int i=0;i<jsonArray.length();i++)
+            JSONObject jsonObject = JSONObject.fromObject(stringBuilder.toString());
+            Iterator it = jsonObject.keys();
+            while(it.hasNext())
             {
-                list.add(jsonArray.getString(i));
-            }
-            Collections.sort(list, new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    return o1.compareTo(o2);
+                List<String> itemList = new ArrayList<String>();
+                String key = it.next().toString();
+                String username = jsonObject.getString("user");
+                JSONArray jsonChildArray = jsonObject.getJSONArray("items");
+                int size = jsonChildArray.length();
+                for(int i = 0; i<size ;i++)
+                {
+
+                    itemList.add(jsonChildArray.getString(i));
                 }
-            });
+                map.put(username,itemList);
+            }
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-        return list;
+        return map;
     }
 
     public Map<String,Integer> groupByBarcode(List<String> list)

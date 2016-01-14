@@ -4,20 +4,23 @@
         unit: '瓶',
         price: 3.00,
         discount: 1.0,
-        promotion: true 
+        promotion: true,
+        vipDiscount: 0.90 
     },
     'ITEM000001': {
         name: '雪碧',
         unit: '瓶',
         price: 3.00,
-        discount: 1.0,
-        promotion: false
+        discount: 0.8,
+        promotion: false,
+        vipDiscount: 0.95
     },
     'ITEM000004': {
         name: '电池',
         unit: '个',
         price: 2.00,
-        discount: 0.8,
-        promotion: false
+        discount: 1.0,
+        promotion: false,
+        vipDiscount: 1.00
     }
 }
