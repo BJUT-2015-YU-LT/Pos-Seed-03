@@ -4,10 +4,19 @@ package com.PosTeam3.core;
  * Created by 硕 on 2016/1/11.
  */
 public class Product {
+    String barcode;
     String name;
     String unit;
     double price;
     double discount;
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
 
     public String getName() {
         return name;
@@ -39,5 +48,16 @@ public class Product {
 
     public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "barcode='" + barcode + '\'' +
+                ", name='" + name + '\'' +
+                ", unit='" + unit + '\'' +
+                ", price=" + price +
+                ", discount=" + discount +
+                '}';
     }
 }
